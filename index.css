@@ -3,16 +3,27 @@
 * {
 	margin: 0;
 	padding: 0;
+	font-family: "Roboto", sans-serif;
 }
 
 body {
 	width: 100vw;
 	height: 100vh;
 
+	display: flex;
+	justify-content: center;
+
 	background-color: #1f2027;
 	color: #fff;
 
-	font-family: "Roboto", sans-serif;
+	overflow: hidden;
+}
+
+#global-wrapper {
+	width: 100%;
+	max-width: 500px;
+
+	position: relative;
 }
 
 #wrapper-itens {
@@ -33,6 +44,8 @@ body {
 	border-radius: 20px;
 
 	background-color: #2a2e3d;
+
+	animation: appear 300ms ease forwards;
 }
 
 .item-icon {
@@ -48,6 +61,10 @@ body {
 	background-color: #383b43;
 
 	font-size: 1.5em;
+}
+
+.item-icon i {
+	filter: drop-shadow(0px 0px 15px rgb(247, 28, 12));
 }
 
 .item-info {
@@ -88,16 +105,47 @@ body {
 
 	z-index: 0;
 
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 10px;
+
 	padding: 10px 20px;
 	padding-bottom: 100px;
 
 	background-color: #291d4d;
 
-    transition: transform 0.5s ease;
+	transition: transform 0.5s ease;
 }
 
 #wrapper-add-more.activated #form-item {
 	transform: translateY(-30%);
+}
+
+#form-item input {
+	width: 100%;
+	font-size: 1.2em;
+	
+	background: none;
+	border: none;
+	outline: none;
+
+	border-bottom: 2px solid #dbd7e7;
+
+	color: #fff;
+}
+
+#form-item input[type="color"] {
+	border: none;
+}
+
+#form-item input::placeholder {
+	color: #fff;
+}
+
+#form-item #color {
+	width: 30%;
+	height: 30px;
 }
 
 #bottom-bar {
@@ -153,4 +201,15 @@ body {
 
 #wrapper-add-more.activated #plus {
 	opacity: 0;
+}
+
+@keyframes appear {
+	0% {
+		opacity: 0;
+		transform: translateY(100%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0%);
+	}
 }
